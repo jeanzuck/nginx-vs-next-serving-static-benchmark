@@ -11,6 +11,35 @@ k6 run k6-nginx.ts
 k6 run k6-nginx-proxy-to-nextjs.ts
 ```
 
+### Performance Test Results Comparison (from ChatGPT)
+
+#### 1. **Next.js**
+- **Average Request Duration**: 3.77ms
+- **Requests per Second**: 2594.73
+- **Max Request Duration**: 53.12ms
+- **Total Data Received**: 44 MB
+- **Total Data Sent**: 2.3 MB
+
+#### 2. **Nginx**
+- **Average Request Duration**: 3.35ms
+- **Requests per Second**: 2918.52
+- **Max Request Duration**: 15.54ms
+- **Total Data Received**: 58 MB
+- **Total Data Sent**: 2.6 MB
+
+#### 3. **Nginx Proxy to Next.js**
+- **Average Request Duration**: 5.62ms
+- **Requests per Second**: 1750.23
+- **Max Request Duration**: 22.83ms
+- **Total Data Received**: 36 MB
+- **Total Data Sent**: 1.6 MB
+
+### Conclusion:
+- **Nginx** offers the fastest performance with an average request duration of **3.35ms**.
+- **Next.js** follows closely behind with **3.77ms**.
+- **Nginx Proxy to Next.js** has the slowest performance, with an average request duration of **5.62ms**.
+
+
 ### nextjs
 
 ```
