@@ -22,22 +22,23 @@ k6 run k6-nginx-proxy-to-nextjs.ts
      scenarios: (100.00%) 1 scenario, 10 max VUs, 40s max duration (incl. graceful stop):
               * default: 10 looping VUs for 10s (gracefulStop: 30s)
 
-INFO[0010] [k6-reporter v2.3.0] Generating HTML summary report  source=console
-     data_received..................: 45 MB  4.5 MB/s
-     data_sent......................: 2.3 MB 234 kB/s
-     http_req_blocked...............: avg=2.37µs  min=0s     med=0s     max=1.07ms p(90)=0s     p(95)=0s
-     http_req_connecting............: avg=223ns   min=0s     med=0s     max=1.07ms p(90)=0s     p(95)=0s
-     http_req_duration..............: avg=3.68ms  min=1.59ms med=3.78ms max=9.35ms p(90)=4.36ms p(95)=4.46ms
-       { expected_response:true }...: avg=3.68ms  min=1.59ms med=3.78ms max=9.35ms p(90)=4.36ms p(95)=4.46ms
-     http_req_failed................: 0.00%  ✓ 0           ✗ 26574
-     http_req_receiving.............: avg=50.29µs min=0s     med=0s     max=2.36ms p(90)=0s     p(95)=544.9µs
-     http_req_sending...............: avg=12.78µs min=0s     med=0s     max=1.12ms p(90)=0s     p(95)=0s
-     http_req_tls_handshaking.......: avg=0s      min=0s     med=0s     max=0s     p(90)=0s     p(95)=0s
-     http_req_waiting...............: avg=3.62ms  min=1.26ms med=3.55ms max=9.35ms p(90)=4.31ms p(95)=4.42ms
-     http_reqs......................: 26574  2656.101618/s
-     iteration_duration.............: avg=3.75ms  min=1.91ms med=3.81ms max=9.87ms p(90)=4.39ms p(95)=4.51ms
-     iterations.....................: 26574  2656.101618/s
+
+     data_received..................: 44 MB  4.4 MB/s
+     data_sent......................: 2.3 MB 228 kB/s
+     http_req_blocked...............: avg=4.77µs  min=0s    med=0s     max=7.52ms  p(90)=0s     p(95)=0s
+     http_req_connecting............: avg=363ns   min=0s    med=0s     max=1.1ms   p(90)=0s     p(95)=0s
+     http_req_duration..............: avg=3.77ms  min=1.3ms med=3.59ms max=53.12ms p(90)=4.41ms p(95)=5.35ms
+       { expected_response:true }...: avg=3.77ms  min=1.3ms med=3.59ms max=53.12ms p(90)=4.41ms p(95)=5.35ms
+     http_req_failed................: 0.00%  ✓ 0           ✗ 25955
+     http_req_receiving.............: avg=49.34µs min=0s    med=0s     max=1.85ms  p(90)=0s     p(95)=544.4µs
+     http_req_sending...............: avg=12.99µs min=0s    med=0s     max=1.52ms  p(90)=0s     p(95)=0s
+     http_req_tls_handshaking.......: avg=0s      min=0s    med=0s     max=0s      p(90)=0s     p(95)=0s
+     http_req_waiting...............: avg=3.71ms  min=1.3ms med=3.4ms  max=53.12ms p(90)=4.39ms p(95)=5.14ms
+     http_reqs......................: 25955  2594.731233/s
+     iteration_duration.............: avg=3.84ms  min=1.3ms med=3.77ms max=60.64ms p(90)=4.44ms p(95)=5.43ms
+     iterations.....................: 25955  2594.731233/s
      vus............................: 10     min=10        max=10
+     vus_max........................: 10     min=10        max=10
 ```
 
 ### nginx
@@ -45,26 +46,27 @@ INFO[0010] [k6-reporter v2.3.0] Generating HTML summary report  source=console
 ```
      execution: local
         script: k6-nginx.ts
+ web dashboard: http://127.0.0.1:5665
         output: -
 
      scenarios: (100.00%) 1 scenario, 10 max VUs, 40s max duration (incl. graceful stop):
               * default: 10 looping VUs for 10s (gracefulStop: 30s)
 
 
-     data_received..................: 55 MB  5.5 MB/s
-     data_sent......................: 2.5 MB 247 kB/s
-     http_req_blocked...............: avg=6.74µs  min=0s     med=0s      max=10.5ms  p(90)=0s     p(95)=0s
-     http_req_connecting............: avg=865ns   min=0s     med=0s      max=1.64ms  p(90)=0s     p(95)=0s
-     http_req_duration..............: avg=3.56ms  min=1.64ms med=3.36ms  max=9.33ms  p(90)=4.44ms p(95)=4.72ms
-       { expected_response:true }...: avg=3.56ms  min=1.64ms med=3.36ms  max=9.33ms  p(90)=4.44ms p(95)=4.72ms
-     http_req_failed................: 0.00%  ✓ 0           ✗ 27436
-     http_req_receiving.............: avg=539.9µs min=0s     med=553.2µs max=3.91ms  p(90)=1.08ms p(95)=1.11ms
-     http_req_sending...............: avg=14.11µs min=0s     med=0s      max=1.15ms  p(90)=0s     p(95)=0s
-     http_req_tls_handshaking.......: avg=0s      min=0s     med=0s      max=0s      p(90)=0s     p(95)=0s
-     http_req_waiting...............: avg=3.01ms  min=1.15ms med=2.81ms  max=8.71ms  p(90)=3.88ms p(95)=4.01ms
-     http_reqs......................: 27436  2742.446637/s
-     iteration_duration.............: avg=3.63ms  min=1.64ms med=3.4ms   max=15.47ms p(90)=4.46ms p(95)=4.92ms
-     iterations.....................: 27436  2742.446637/s
+     data_received..................: 58 MB  5.8 MB/s
+     data_sent......................: 2.6 MB 263 kB/s
+     http_req_blocked...............: avg=5.5µs    min=0s     med=0s      max=7.7ms    p(90)=0s       p(95)=0s
+     http_req_connecting............: avg=504ns    min=0s     med=0s      max=622.29µs p(90)=0s       p(95)=0s
+     http_req_duration..............: avg=3.35ms   min=1.58ms med=3.29ms  max=15.54ms  p(90)=4.35ms   p(95)=4.45ms
+       { expected_response:true }...: avg=3.35ms   min=1.58ms med=3.29ms  max=15.54ms  p(90)=4.35ms   p(95)=4.45ms
+     http_req_failed................: 0.00%  ✓ 0           ✗ 29194
+     http_req_receiving.............: avg=497.98µs min=0s     med=546.9µs max=12.24ms  p(90)=785.07µs p(95)=1.09ms
+     http_req_sending...............: avg=13.53µs  min=0s     med=0s      max=1.78ms   p(90)=0s       p(95)=0s
+     http_req_tls_handshaking.......: avg=0s       min=0s     med=0s      max=0s       p(90)=0s       p(95)=0s
+     http_req_waiting...............: avg=2.84ms   min=1.08ms med=2.75ms  max=13.34ms  p(90)=3.81ms   p(95)=3.9ms
+     http_reqs......................: 29194  2918.521029/s
+     iteration_duration.............: avg=3.41ms   min=1.58ms med=3.31ms  max=18.21ms  p(90)=4.37ms   p(95)=4.48ms
+     iterations.....................: 29194  2918.521029/s
      vus............................: 10     min=10        max=10
      vus_max........................: 10     min=10        max=10
 ```
@@ -74,26 +76,27 @@ INFO[0010] [k6-reporter v2.3.0] Generating HTML summary report  source=console
 ```
      execution: local
         script: k6-nginx-proxy-to-nextjs.ts
+ web dashboard: http://127.0.0.1:5665
         output: -
 
      scenarios: (100.00%) 1 scenario, 10 max VUs, 40s max duration (incl. graceful stop):
               * default: 10 looping VUs for 10s (gracefulStop: 30s)
 
 
-     data_received..................: 22 MB  2.1 MB/s
-     data_sent......................: 938 kB 94 kB/s
-     http_req_blocked...............: avg=12.06µs min=0s     med=0s     max=8.6ms   p(90)=0s      p(95)=0s
-     http_req_connecting............: avg=1.35µs  min=0s     med=0s     max=1.07ms  p(90)=0s      p(95)=0s
-     http_req_duration..............: avg=9.49ms  min=5.41ms med=9.33ms max=26.45ms p(90)=11.42ms p(95)=12.1ms
-       { expected_response:true }...: avg=9.49ms  min=5.41ms med=9.33ms max=26.45ms p(90)=11.42ms p(95)=12.1ms
-     http_req_failed................: 0.00%  ✓ 0           ✗ 10420
-     http_req_receiving.............: avg=78.04µs min=0s     med=0s     max=2.06ms  p(90)=540.1µs p(95)=556.6µs
-     http_req_sending...............: avg=18.92µs min=0s     med=0s     max=1.27ms  p(90)=0s      p(95)=0s
+     data_received..................: 36 MB  3.6 MB/s
+     data_sent......................: 1.6 MB 158 kB/s
+     http_req_blocked...............: avg=6.66µs  min=0s     med=0s     max=7.28ms  p(90)=0s      p(95)=0s
+     http_req_connecting............: avg=601ns   min=0s     med=0s     max=1.09ms  p(90)=0s      p(95)=0s
+     http_req_duration..............: avg=5.62ms  min=2.58ms med=4.95ms max=22.83ms p(90)=8.74ms  p(95)=9.94ms
+       { expected_response:true }...: avg=5.62ms  min=2.58ms med=4.95ms max=22.83ms p(90)=8.74ms  p(95)=9.94ms
+     http_req_failed................: 0.00%  ✓ 0           ✗ 17517
+     http_req_receiving.............: avg=59.12µs min=0s     med=0s     max=1.55ms  p(90)=519.9µs p(95)=549.79µs
+     http_req_sending...............: avg=16.26µs min=0s     med=0s     max=1.77ms  p(90)=0s      p(95)=0s
      http_req_tls_handshaking.......: avg=0s      min=0s     med=0s     max=0s      p(90)=0s      p(95)=0s
-     http_req_waiting...............: avg=9.39ms  min=5.41ms med=9.28ms max=26.45ms p(90)=11.21ms p(95)=12.04ms
-     http_reqs......................: 10420  1040.869304/s
-     iteration_duration.............: avg=9.58ms  min=5.47ms med=9.37ms max=28.48ms p(90)=11.49ms p(95)=12.14ms
-     iterations.....................: 10420  1040.869304/s
+     http_req_waiting...............: avg=5.54ms  min=2.58ms med=4.93ms max=22.28ms p(90)=8.69ms  p(95)=9.88ms
+     http_reqs......................: 17517  1750.230909/s
+     iteration_duration.............: avg=5.69ms  min=2.58ms med=4.97ms max=22.83ms p(90)=8.78ms  p(95)=10.01ms
+     iterations.....................: 17517  1750.230909/s
      vus............................: 10     min=10        max=10
      vus_max........................: 10     min=10        max=10
 ```
