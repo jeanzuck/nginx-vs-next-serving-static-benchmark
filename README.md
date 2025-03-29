@@ -1,4 +1,4 @@
-# nginx-vs-next-static-benchmark
+# nginx-vs-next-serving-static-benchmark
 
 Reproduce
 
